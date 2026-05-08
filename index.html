@@ -1060,7 +1060,7 @@ CREATE POLICY "setor_relacionamentos_events"    ON events    FOR ALL TO authenti
 */
 
 const SUPABASE_URL      = 'https://olhgcpwbnhsinndcpwoi.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9saGdjcHdibmhzaW5uZGNwd29pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY0NzcyNDYsImV4cCI6MjA2MjA1MzI0Nn0.90ROCP7tgSKjx_bL1oBcX48LLbA8Tv-J6Q5-soq9yrA';
+const SUPABASE_ANON_KEY = 'sb_publishable_9Sm26hU3T_LWtmJQBYlBAw_W3A7duXe';
 const DEPT = 'relacionamentos';
 
 // ── Inicializar cliente ────────────────────────────────────────
@@ -1124,26 +1124,30 @@ function setupRealtime() {
   if (!_supabase) return;
   setRTPill(false);
 
-  realtimeChannel = _supabase
-    .channel('caderno-realtime')
-    .on('postgres_changes', { event: '*', schema: 'public', table: 'tasks' }, () => {
-      loadTasks();
-    })
-    .on('postgres_changes', { event: '*', schema: 'public', table: 'notes' }, () => {
-      loadNotes();
-    })
-    .on('postgres_changes', { event: '*', schema: 'public', table: 'templates' }, () => {
-      loadTemplates();
-    })
-    .on('postgres_changes', { event: '*', schema: 'public', table: 'events' }, () => {
-      loadEvents();
-    })
-    .subscribe((status) => {
-      const connected = status === 'SUBSCRIBED';
-      setRTPill(connected);
-      const tplBadge = document.getElementById('tpl-rt-badge');
-      if (tplBadge) tplBadge.style.display = connected ? 'inline-flex' : 'none';
-    });
+  // Polling fallback every 8 seconds for shared data sync
+  setInterval(() => {
+    loadTasks();
+    loadTemplates();
+    loadEvents();
+  }, 8000);
+
+  // Try WebSocket realtime
+  try {
+    realtimeChannel = _supabase
+      .channel('caderno-realtime')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'tasks' }, () => { loadTasks(); })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'templates' }, () => { loadTemplates(); })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'events' }, () => { loadEvents(); })
+      .subscribe((status) => {
+        const connected = status === 'SUBSCRIBED';
+        setRTPill(connected);
+        const tplBadge = document.getElementById('tpl-rt-badge');
+        if (tplBadge) tplBadge.style.display = connected ? 'inline-flex' : 'none';
+      });
+  } catch(e) {
+    console.log('Realtime WebSocket nao disponivel, usando polling.');
+    setRTPill(true); // Show as connected since polling is active
+  }
 }
 
 function setRTPill(connected) {
