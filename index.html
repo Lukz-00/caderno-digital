@@ -109,23 +109,88 @@ select option{background:var(--bg3);}
 @keyframes fadein{from{opacity:0}to{opacity:1}}
 
 .auth-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(240,165,0,.08),transparent);pointer-events:none;}
-.auth-card{position:relative;width:420px;max-width:95vw;background:var(--card);border:1px solid var(--bd2);border-radius:20px;padding:44px;box-shadow:var(--sh3);}
-.auth-brand{text-align:center;margin-bottom:32px;}
-.auth-logo{width:56px;height:56px;background:linear-gradient(135deg,var(--a),var(--a2));border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:26px;box-shadow:0 4px 20px rgba(240,165,0,.3);}
-.auth-brand h1{font-family:var(--f-brand);font-size:26px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--tx);}
-.auth-brand p{font-family:var(--fm);font-size:11px;color:var(--tx3);margin-top:3px;letter-spacing:.05em;}
-.auth-tabs{display:flex;border:1px solid var(--bd);border-radius:var(--rs);overflow:hidden;margin-bottom:24px;background:var(--bg2);}
-.auth-tab{flex:1;padding:9px;font-size:13px;font-weight:600;cursor:pointer;background:transparent;color:var(--tx3);border:none;transition:all var(--t);}
-.auth-tab.active{background:var(--a);color:#000;}
-.auth-field{margin-bottom:14px;}
-.auth-field label{display:block;font-family:var(--fm);font-size:10px;font-weight:500;color:var(--tx3);letter-spacing:.07em;text-transform:uppercase;margin-bottom:5px;}
-.auth-field input{width:100%;padding:10px 13px;background:var(--inp);border:1px solid var(--bd2);border-radius:var(--rs);color:var(--tx);font-family:var(--f);font-size:14px;outline:none;transition:border-color var(--t);}
-.auth-field input:focus{border-color:var(--a);}
-.auth-btn{width:100%;padding:12px;background:var(--a);color:#000;border:none;border-radius:var(--rs);font-size:14px;font-weight:700;transition:all var(--t);margin-top:4px;}
-.auth-btn:hover{background:var(--al);transform:translateY(-1px);box-shadow:0 4px 16px rgba(240,165,0,.25);}
-.auth-err{background:var(--lt-bg);border:1px solid rgba(239,68,68,.25);border-radius:var(--rx);padding:9px 13px;font-size:12px;color:var(--lt-tx);font-family:var(--fm);margin-top:10px;display:none;}
+/* ── AUTH REDESIGN — HIGH CONTRAST ── */
+#auth-wrap{background:#08080f;}
+.auth-card{
+  position:relative;width:440px;max-width:96vw;
+  /* Card explicitamente mais claro que o fundo para contraste */
+  background:#1c1c2e;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:24px;padding:48px 44px;
+  box-shadow:0 24px 80px rgba(0,0,0,.7),0 0 0 1px rgba(240,165,0,.08);
+}
+.auth-brand{text-align:center;margin-bottom:28px;}
+.auth-logo{width:60px;height:60px;background:linear-gradient(135deg,var(--a),var(--a2));border-radius:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:28px;box-shadow:0 6px 24px rgba(240,165,0,.35);}
+.auth-brand h1{font-family:var(--f-brand);font-size:26px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#f0f0ff;}
+.auth-brand p{font-family:var(--fm);font-size:11px;color:#8888aa;margin-top:4px;letter-spacing:.05em;}
+
+/* Pill tabs */
+.auth-tabs{display:flex;gap:10px;margin-bottom:28px;}
+.auth-tab{
+  flex:1;padding:11px 20px;
+  font-family:var(--f-brand);font-size:13px;font-weight:700;letter-spacing:.04em;
+  cursor:pointer;border-radius:50px;
+  transition:all .2s ease;white-space:nowrap;text-align:center;
+}
+/* Entrar — sempre âmbar sólido quando ativo */
+.auth-tab:first-child.active{
+  background:var(--a);color:#000;border:2px solid var(--a);
+  box-shadow:0 4px 18px rgba(240,165,0,.4);
+}
+.auth-tab:first-child:not(.active){
+  background:transparent;color:var(--a);
+  border:2px solid rgba(240,165,0,.5);
+}
+/* Criar Acesso — outline neutro */
+.auth-tab:last-child.active{
+  background:rgba(255,255,255,.1);color:#fff;
+  border:2px solid rgba(255,255,255,.25);
+}
+.auth-tab:last-child:not(.active){
+  background:transparent;color:#8888aa;
+  border:2px solid rgba(255,255,255,.12);
+}
+
+/* Form fields — alta visibilidade */
+.auth-field{margin-bottom:16px;}
+.auth-field label{
+  display:block;font-family:var(--fm);font-size:10px;font-weight:700;
+  color:#a0a0c0;letter-spacing:.09em;text-transform:uppercase;margin-bottom:6px;
+}
+.auth-field input{
+  width:100%;padding:12px 16px;
+  background:#252538;  /* visível contra o card */
+  border:1.5px solid rgba(255,255,255,.15);
+  border-radius:12px;
+  color:#f0f0ff;
+  font-family:var(--f);font-size:14px;outline:none;
+  transition:all var(--t);
+}
+.auth-field input:focus{
+  border-color:var(--a);
+  background:#2a2a40;
+  box-shadow:0 0 0 3px rgba(240,165,0,.12);
+}
+.auth-field input::placeholder{color:#5050788;}
+
+/* Botão principal — pill âmbar */
+.auth-btn{
+  width:100%;padding:13px;margin-top:6px;
+  background:linear-gradient(135deg,#f0a500,#d08800);
+  color:#000;border:none;border-radius:50px;
+  font-family:var(--f-brand);font-size:14px;font-weight:800;letter-spacing:.04em;
+  cursor:pointer;transition:all .2s ease;
+  box-shadow:0 4px 20px rgba(240,165,0,.3);
+}
+.auth-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(240,165,0,.45);}
+.auth-btn:active{transform:translateY(0);}
+
+.auth-err{
+  background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);
+  border-radius:10px;padding:9px 13px;font-size:12px;
+  color:#ff8080;font-family:var(--fm);margin-top:10px;display:none;
+}
 .auth-form{display:none;}.auth-form.active{display:block;}
-.auth-loading{text-align:center;padding:12px;font-family:var(--fm);font-size:12px;color:var(--tx3);}
 
 /* ╔══════════════════════════════════════════════════════════════╗
    ║  APP LAYOUT                                                  ║
@@ -509,6 +574,148 @@ textarea{resize:vertical;min-height:78px;line-height:1.65;}
 .tpl-copy-btn{width:100%;padding:11px;background:var(--a);color:#000;border:none;border-radius:var(--rs);font-size:14px;font-weight:700;cursor:pointer;transition:all var(--t);margin-top:10px;font-family:'Comic Sans MS','Comic Sans',cursive;}
 .tpl-copy-btn:hover{background:var(--al);}
 
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║  INTERNAL CHAT                                               ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+/* Floating button */
+#chat-fab{
+  position:fixed;bottom:32px;right:28px;z-index:500;
+  width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,var(--a),var(--a2));
+  border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;box-shadow:0 4px 20px rgba(240,165,0,.4);
+  transition:all .2s ease;
+}
+#chat-fab:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(240,165,0,.55);}
+#chat-fab .chat-unread{
+  position:absolute;top:-3px;right:-3px;
+  background:#ef4444;color:#fff;
+  font-family:var(--fm);font-size:10px;font-weight:700;
+  width:18px;height:18px;border-radius:50%;
+  display:none;align-items:center;justify-content:center;
+}
+#chat-fab .chat-unread.show{display:flex;}
+
+/* Chat panel */
+#chat-panel{
+  position:fixed;bottom:96px;right:28px;z-index:499;
+  width:360px;max-width:96vw;
+  background:var(--card);border:1px solid var(--bd2);
+  border-radius:20px;box-shadow:var(--sh3);
+  display:flex;flex-direction:column;
+  transform:scale(.9) translateY(20px);opacity:0;
+  transition:all .22s cubic-bezier(.34,1.56,.64,1);
+  pointer-events:none;max-height:520px;
+}
+#chat-panel.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all;}
+
+/* Chat header */
+.chat-hdr{
+  padding:14px 18px;border-bottom:1px solid var(--bd);
+  display:flex;align-items:center;gap:10px;flex-shrink:0;
+  border-radius:20px 20px 0 0;background:var(--bg1);
+}
+.chat-hdr-icon{font-size:18px;}
+.chat-hdr-title{font-family:var(--f-brand);font-size:14px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--tx);flex:1;}
+.chat-hdr-users{font-family:var(--fm);font-size:10.5px;color:var(--ok-tx);display:flex;align-items:center;gap:4px;}
+.chat-online-dot{width:6px;height:6px;border-radius:50%;background:var(--ok-tx);animation:rtpulse 2s infinite;}
+.chat-close{background:none;border:none;color:var(--tx3);cursor:pointer;font-size:16px;transition:color var(--t);}
+.chat-close:hover{color:var(--tx);}
+
+/* Messages area */
+.chat-messages{
+  flex:1;overflow-y:auto;padding:14px 16px;
+  display:flex;flex-direction:column;gap:10px;
+  min-height:200px;
+}
+.chat-msg{display:flex;gap:9px;align-items:flex-start;}
+.chat-msg.own{flex-direction:row-reverse;}
+.chat-avt{
+  width:30px;height:30px;border-radius:50%;
+  background:linear-gradient(135deg,var(--a),var(--a2));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-brand);font-size:12px;font-weight:700;color:#000;
+  flex-shrink:0;
+}
+.chat-bubble{
+  max-width:75%;padding:9px 13px;
+  background:var(--bg3);border:1px solid var(--bd);
+  border-radius:14px 14px 14px 4px;
+  font-family:var(--f);font-size:13px;color:var(--tx);line-height:1.55;
+}
+.chat-msg.own .chat-bubble{
+  background:var(--ag);border-color:rgba(240,165,0,.2);
+  border-radius:14px 14px 4px 14px;color:var(--tx);
+}
+.chat-bubble-name{
+  font-family:var(--fm);font-size:10px;font-weight:600;
+  color:var(--a);margin-bottom:3px;letter-spacing:.03em;
+}
+.chat-msg.own .chat-bubble-name{text-align:right;color:var(--tx3);}
+.chat-bubble-time{
+  font-family:var(--fm);font-size:9.5px;color:var(--tx4);
+  margin-top:4px;
+}
+.chat-msg.own .chat-bubble-time{text-align:right;}
+.chat-mention{
+  color:var(--a);font-weight:600;
+  background:rgba(240,165,0,.12);border-radius:4px;
+  padding:0 3px;
+}
+.chat-mentioned .chat-bubble{
+  background:rgba(240,165,0,.08);
+  border-color:rgba(240,165,0,.3);
+}
+.chat-empty{text-align:center;color:var(--tx4);font-family:var(--fm);font-size:12px;padding:24px 0;}
+
+/* Input area */
+.chat-input-area{
+  padding:12px 14px;border-top:1px solid var(--bd);flex-shrink:0;
+  border-radius:0 0 20px 20px;background:var(--bg1);
+}
+.chat-input-row{display:flex;gap:8px;align-items:flex-end;}
+.chat-input-wrap{flex:1;position:relative;}
+#chat-input{
+  width:100%;padding:9px 13px;
+  background:var(--inp);border:1.5px solid var(--bd2);border-radius:12px;
+  color:var(--tx);font-family:var(--f);font-size:13px;
+  outline:none;resize:none;line-height:1.5;max-height:100px;
+  transition:border-color var(--t);
+}
+#chat-input:focus{border-color:var(--a);}
+#chat-input::placeholder{color:var(--tx4);}
+.chat-send-btn{
+  width:38px;height:38px;border-radius:50%;
+  background:var(--a);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;color:#000;flex-shrink:0;
+  transition:all var(--t);
+}
+.chat-send-btn:hover{background:var(--al);transform:scale(1.05);}
+.chat-hint{font-family:var(--fm);font-size:10px;color:var(--tx4);margin-top:6px;}
+
+/* @mention autocomplete */
+.mention-drop{
+  position:absolute;bottom:calc(100% + 6px);left:0;right:0;
+  background:var(--card);border:1px solid var(--bd2);border-radius:10px;
+  box-shadow:var(--sh3);z-index:600;overflow:hidden;display:none;
+}
+.mention-drop.open{display:block;}
+.mention-item{
+  display:flex;align-items:center;gap:9px;padding:9px 12px;
+  cursor:pointer;transition:background var(--t);font-size:13px;color:var(--tx);
+}
+.mention-item:hover,.mention-item.selected{background:var(--ag);color:var(--a);}
+.mention-avt-sm{
+  width:24px;height:24px;border-radius:50%;
+  background:linear-gradient(135deg,var(--a),var(--a2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;color:#000;flex-shrink:0;
+}
+.mention-name{font-weight:600;font-family:var(--fm);}
+
 /* CREDITS FOOTER */
 .credits-footer{flex-shrink:0;height:28px;background:var(--bg1);border-top:1px solid var(--bd);display:flex;align-items:center;justify-content:center;gap:6px;font-family:var(--fm);font-size:10.5px;color:var(--tx4);letter-spacing:.03em;user-select:none;}
 .credits-footer .cf-sep{color:var(--tx5);margin:0 4px;}
@@ -538,7 +745,7 @@ textarea{resize:vertical;min-height:78px;line-height:1.65;}
     </div>
     <div class="auth-tabs">
       <button class="auth-tab active" onclick="authTab('login')">Entrar</button>
-      <button class="auth-tab" onclick="authTab('signup')">Criar conta</button>
+      <button class="auth-tab" onclick="authTab('signup')">Criar Acesso</button>
     </div>
     <!-- Login -->
     <div class="auth-form active" id="af-login">
@@ -553,7 +760,7 @@ textarea{resize:vertical;min-height:78px;line-height:1.65;}
       <div class="auth-field"><label>Nome completo</label><input type="text" id="s-nome" placeholder="Seu nome" onkeydown="if(event.key==='Enter')doSignup()"></div>
       <div class="auth-field"><label>E-mail</label><input type="email" id="s-email" placeholder="voce@empresa.com" onkeydown="if(event.key==='Enter')doSignup()"></div>
       <div class="auth-field"><label>Senha (mín. 6 caracteres)</label><input type="password" id="s-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doSignup()"></div>
-      <button class="auth-btn" onclick="doSignup()" id="btn-signup">Criar conta →</button>
+      <button class="auth-btn" onclick="doSignup()" id="btn-signup">Criar Acesso →</button>
       <div class="auth-err" id="auth-err-signup"></div>
     </div>
     <!-- Recuperar senha -->
@@ -1181,6 +1388,7 @@ function setupRealtime() {
     loadTasks();
     loadTemplates();
     loadEvents();
+    loadMessages();
   }, 8000);
 
   // Try WebSocket realtime
@@ -1367,6 +1575,7 @@ async function startApp(user) {
   await Promise.all([ loadTasks(), loadNotes(), loadTemplates(), loadEvents(), loadFiles() ]);
   setupRealtime();
   updateStats();
+  await initChat();
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -2191,6 +2400,293 @@ async function saveProfile() {
   toast('✅ Perfil atualizado!','success');
 }
 
+
+// ══════════════════════════════════════════════════════════════
+// INTERNAL CHAT WITH @MENTIONS
+/*
+   SQL PARA EXECUTAR NO SUPABASE:
+
+   CREATE TABLE IF NOT EXISTS messages (
+     id         UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+     content    TEXT NOT NULL,
+     user_name  TEXT DEFAULT '',
+     user_email TEXT DEFAULT '',
+     mentions   TEXT[] DEFAULT '{}',
+     department TEXT DEFAULT 'relacionamentos',
+     is_shared  BOOLEAN DEFAULT true,
+     created_at TIMESTAMPTZ DEFAULT NOW()
+   );
+   ALTER TABLE messages ENABLE ROW LEVEL SECURITY;
+   CREATE POLICY "chat_relacionamentos" ON messages
+     FOR ALL TO authenticated
+     USING (is_shared = true) WITH CHECK (is_shared = true);
+   ALTER PUBLICATION supabase_realtime ADD TABLE messages;
+*/
+// ══════════════════════════════════════════════════════════════
+let chatOpen = false;
+let chatMessages = [];
+let chatUnreadCount = 0;
+let chatChannel = null;
+let knownUsers = []; // for @mention autocomplete
+let mentionQuery = '';
+let mentionActive = false;
+let mentionSelectedIdx = -1;
+let mentionStart = -1;
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('chat-panel').classList.toggle('open', chatOpen);
+  if (chatOpen) {
+    chatUnreadCount = 0;
+    updateUnreadBadge();
+    scrollChatToBottom();
+    document.getElementById('chat-input').focus();
+  }
+}
+
+function updateUnreadBadge() {
+  const badge = document.getElementById('chat-unread');
+  if (chatUnreadCount > 0) {
+    badge.textContent = chatUnreadCount > 9 ? '9+' : chatUnreadCount;
+    badge.classList.add('show');
+  } else {
+    badge.classList.remove('show');
+  }
+}
+
+function scrollChatToBottom() {
+  const el = document.getElementById('chat-messages');
+  if (el) setTimeout(() => el.scrollTop = el.scrollHeight, 50);
+}
+
+// ── Load messages ──────────────────────────────────────────────
+async function loadMessages() {
+  if (!_supabase) return;
+  const { data, error } = await _supabase
+    .from('messages')
+    .select('*')
+    .eq('department', DEPT)
+    .order('created_at', { ascending: true })
+    .limit(100);
+  if (error) { console.error('Chat load error:', error); return; }
+  chatMessages = data || [];
+  buildKnownUsers();
+  renderChat();
+}
+
+// ── Send message ───────────────────────────────────────────────
+async function sendChatMessage() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text || !_supabase) return;
+
+  // Extract @mentions
+  const mentionRegex = /@(\S+)/g;
+  const mentions = [];
+  let m;
+  while ((m = mentionRegex.exec(text)) !== null) {
+    mentions.push(m[1]);
+  }
+
+  input.value = '';
+  input.style.height = 'auto';
+  closeMentionDrop();
+
+  const { error } = await dbInsert('messages', {
+    content: text,
+    user_name: userDisplayName(),
+    user_email: currentUser?.email || '',
+    mentions
+  });
+
+  if (error) { toast('❌ Erro ao enviar mensagem', 'error'); return; }
+}
+
+// ── Realtime for chat ──────────────────────────────────────────
+function setupChatRealtime() {
+  if (!_supabase) return;
+  const ch = _supabase
+    .channel('chat-realtime')
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, (payload) => {
+      const msg = payload.new;
+      chatMessages.push(msg);
+      buildKnownUsers();
+      renderChat();
+      // Notify if chat is closed and message is from someone else
+      if (!chatOpen && msg.user_email !== currentUser?.email) {
+        chatUnreadCount++;
+        updateUnreadBadge();
+      }
+      // If chat is open, scroll to bottom
+      if (chatOpen) scrollChatToBottom();
+    })
+    .subscribe();
+}
+
+// ── Render chat ────────────────────────────────────────────────
+function renderChat() {
+  const container = document.getElementById('chat-messages');
+  const empty = document.getElementById('chat-empty');
+  if (!container) return;
+
+  if (!chatMessages.length) {
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+
+  const myEmail = currentUser?.email || '';
+  const myName = userDisplayName();
+
+  // Group messages (show avatar/name only when sender changes)
+  let lastEmail = '';
+  container.innerHTML = chatMessages.map((msg, i) => {
+    const isOwn = msg.user_email === myEmail;
+    const isNewSender = msg.user_email !== lastEmail;
+    lastEmail = msg.user_email;
+
+    // Check if I'm mentioned
+    const isMentioned = (msg.mentions || []).some(m =>
+      myName.toLowerCase().includes(m.toLowerCase()) ||
+      (myEmail.split('@')[0]).toLowerCase().includes(m.toLowerCase())
+    );
+
+    const initial = (msg.user_name || '?')[0].toUpperCase();
+    const time = new Date(msg.created_at).toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'});
+
+    // Render content with @mention highlighting
+    const renderedContent = esc(msg.content).replace(
+      /@(\S+)/g,
+      '<span class="chat-mention">@$1</span>'
+    );
+
+    return `<div class="chat-msg${isOwn?' own':''}${isMentioned?' chat-mentioned':''}">
+      ${!isOwn && isNewSender ? `<div class="chat-avt">${initial}</div>` : (!isOwn ? '<div style="width:30px;flex-shrink:0;"></div>' : '')}
+      <div class="chat-bubble">
+        ${isNewSender ? `<div class="chat-bubble-name">${esc(msg.user_name)}</div>` : ''}
+        <div>${renderedContent}</div>
+        <div class="chat-bubble-time">${time}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  if (chatOpen) scrollChatToBottom();
+}
+
+// ── Build known users for @mention ────────────────────────────
+function buildKnownUsers() {
+  const seen = new Set();
+  knownUsers = [];
+  chatMessages.forEach(m => {
+    if (!seen.has(m.user_email) && m.user_email !== currentUser?.email) {
+      seen.add(m.user_email);
+      knownUsers.push({ name: m.user_name, email: m.user_email });
+    }
+  });
+}
+
+// ── @Mention autocomplete ──────────────────────────────────────
+function chatInputHandler(el) {
+  // Auto-resize textarea
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+
+  const text = el.value;
+  const cursor = el.selectionStart;
+
+  // Find if cursor is right after @word
+  const before = text.slice(0, cursor);
+  const atMatch = before.match(/@(\w*)$/);
+
+  if (atMatch) {
+    mentionActive = true;
+    mentionQuery = atMatch[1].toLowerCase();
+    mentionStart = before.lastIndexOf('@');
+    mentionSelectedIdx = 0;
+    showMentionDrop();
+  } else {
+    mentionActive = false;
+    closeMentionDrop();
+  }
+}
+
+function showMentionDrop() {
+  const drop = document.getElementById('mention-drop');
+  // Filter users by query
+  const filtered = mentionQuery
+    ? knownUsers.filter(u => u.name.toLowerCase().includes(mentionQuery))
+    : knownUsers;
+
+  if (!filtered.length) { closeMentionDrop(); return; }
+
+  drop.innerHTML = filtered.map((u, i) =>
+    `<div class="mention-item${i===mentionSelectedIdx?' selected':''}" onclick="insertMention('${esc(u.name)}')">
+      <div class="mention-avt-sm">${u.name[0].toUpperCase()}</div>
+      <span class="mention-name">@${esc(u.name)}</span>
+    </div>`
+  ).join('');
+  drop.classList.add('open');
+  drop._filtered = filtered;
+}
+
+function closeMentionDrop() {
+  const drop = document.getElementById('mention-drop');
+  drop.classList.remove('open');
+  drop._filtered = [];
+  mentionActive = false;
+  mentionSelectedIdx = -1;
+}
+
+function insertMention(name) {
+  const input = document.getElementById('chat-input');
+  const text = input.value;
+  const before = text.slice(0, mentionStart);
+  const after = text.slice(input.selectionStart);
+  input.value = before + '@' + name + ' ' + after;
+  input.focus();
+  const pos = before.length + name.length + 2;
+  input.setSelectionRange(pos, pos);
+  closeMentionDrop();
+}
+
+function chatKeyDown(e) {
+  if (mentionActive) {
+    const drop = document.getElementById('mention-drop');
+    const filtered = drop._filtered || [];
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      mentionSelectedIdx = Math.min(mentionSelectedIdx + 1, filtered.length - 1);
+      showMentionDrop(); return;
+    }
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      mentionSelectedIdx = Math.max(mentionSelectedIdx - 1, 0);
+      showMentionDrop(); return;
+    }
+    if (e.key === 'Tab' || (e.key === 'Enter' && filtered.length)) {
+      e.preventDefault();
+      const sel = filtered[mentionSelectedIdx] || filtered[0];
+      if (sel) insertMention(sel.name);
+      return;
+    }
+    if (e.key === 'Escape') { closeMentionDrop(); return; }
+  }
+
+  // Send on Enter (not Shift+Enter)
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendChatMessage();
+  }
+}
+
+// Init chat after login
+async function initChat() {
+  const fab = document.getElementById('chat-fab');
+  if (fab) fab.style.display = 'flex';
+  await loadMessages();
+  setupChatRealtime();
+}
+
 // ══════════════════════════════════════════════════════════════
 // UTILS
 // ══════════════════════════════════════════════════════════════
@@ -2207,5 +2703,40 @@ function greeting(n) { const h=new Date().getHours(); return `${h<12?'Bom dia':h
 function updateClock() { document.getElementById('tp-clock').textContent = new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',second:'2-digit'}); }
 function parseTags(s) { return s ? s.split(',').map(t=>t.trim()).filter(Boolean) : []; }
 </script>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     INTERNAL CHAT
+═══════════════════════════════════════════════════════════════ -->
+<!-- Floating Action Button -->
+<button id="chat-fab" onclick="toggleChat()" title="Chat da equipe" style="display:none;">
+  💬
+  <span class="chat-unread" id="chat-unread">0</span>
+</button>
+
+<!-- Chat Panel -->
+<div id="chat-panel">
+  <div class="chat-hdr">
+    <span class="chat-hdr-icon">💬</span>
+    <span class="chat-hdr-title">Chat da Equipe</span>
+    <span class="chat-hdr-users"><span class="chat-online-dot"></span><span id="chat-online-count">ao vivo</span></span>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <div class="chat-empty" id="chat-empty">Nenhuma mensagem ainda.<br>Diga olá para a equipe! 👋</div>
+  </div>
+  <div class="chat-input-area">
+    <div class="chat-input-row">
+      <div class="chat-input-wrap">
+        <div class="mention-drop" id="mention-drop"></div>
+        <textarea id="chat-input" rows="1" placeholder="Mensagem… use @ para mencionar alguém"
+          oninput="chatInputHandler(this)"
+          onkeydown="chatKeyDown(event)"></textarea>
+      </div>
+      <button class="chat-send-btn" onclick="sendChatMessage()" title="Enviar (Enter)">➤</button>
+    </div>
+    <div class="chat-hint">Enter para enviar · Shift+Enter para nova linha · @ para mencionar</div>
+  </div>
+</div>
+
 </body>
 </html>
