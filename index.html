@@ -11,31 +11,54 @@
 <!-- ═══ FONTS ════════════════════════════════════════════════════ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Google Fonts removido: usando Comic Sans MS -->
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&family=Montserrat:wght@500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 /* ╔══════════════════════════════════════════════════════════════╗
    ║  DESIGN TOKENS — DARK OBSIDIAN NOTEBOOK                     ║
    ╚══════════════════════════════════════════════════════════════╝ */
-:root {
-  --bg:   #06070f;
-  --bg1:  #0b0d1a;
-  --bg2:  #101323;
-  --bg3:  #151929;
-  --bg4:  #1b2035;
-  --bg5:  #222740;
-  --card: #0d1020;
-  --inp:  #111425;
+/* ── THEME: OBSIDIANA (default) ── */
+[data-theme="obsidiana"], :root {
+  --bg:   #0d0d0f;
+  --bg1:  #13131a;
+  --bg2:  #1a1a26;
+  --bg3:  #22222f;
+  --bg4:  #2a2a3d;
+  --bg5:  #32324a;
+  --card: #181824;
+  --inp:  #1a1a26;
 
-  --tx:  #eaedf8;
-  --tx2: #b0b6d4;
-  --tx3: #636888;
-  --tx4: #3e4263;
-  --tx5: #272c4a;
+  --tx:  #c8c8e8;
+  --tx2: #a0a0c8;
+  --tx3: #6060a0;
+  --tx4: #404078;
+  --tx5: #2a2a58;
 
-  --bd:  #181c35;
-  --bd2: #1f2440;
-  --bd3: #2a304e;
+  --bd:  #2e2e40;
+  --bd2: #38384e;
+  --bd3: #44445a;
+}
+
+/* ── THEME: PRETO PURO ── */
+[data-theme="preto-puro"] {
+  --bg:   #050505;
+  --bg1:  #0a0a0a;
+  --bg2:  #111111;
+  --bg3:  #1a1a1a;
+  --bg4:  #222222;
+  --bg5:  #2a2a2a;
+  --card: #111111;
+  --inp:  #1a1a1a;
+
+  --tx:  #c8c8c8;
+  --tx2: #a0a0a0;
+  --tx3: #606060;
+  --tx4: #404040;
+  --tx5: #282828;
+
+  --bd:  #2a2a2a;
+  --bd2: #333333;
+  --bd3: #3d3d3d;
 
   /* Accent: warm amber/gold */
   --a:   #f0a500;
@@ -56,9 +79,10 @@
   --r:  14px; --rs: 9px; --rx: 5px;
   --t:  .14s ease;
 
-  --f:  'Comic Sans MS','Comic Sans',cursive;
-  --fh: 'Comic Sans MS','Comic Sans',cursive;
-  --fm: 'Comic Sans MS','Comic Sans',cursive;
+  --f:  'Open Sans',sans-serif;
+  --fh: 'Montserrat',sans-serif;
+  --fm: 'Urbanist',sans-serif;
+  --f-brand: 'Urbanist',sans-serif;
 }
 
 /* ── Reset ───────────────────────────────────────────────────── */
@@ -88,7 +112,7 @@ select option{background:var(--bg3);}
 .auth-card{position:relative;width:420px;max-width:95vw;background:var(--card);border:1px solid var(--bd2);border-radius:20px;padding:44px;box-shadow:var(--sh3);}
 .auth-brand{text-align:center;margin-bottom:32px;}
 .auth-logo{width:56px;height:56px;background:linear-gradient(135deg,var(--a),var(--a2));border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:26px;box-shadow:0 4px 20px rgba(240,165,0,.3);}
-.auth-brand h1{font-family:var(--fh);font-size:28px;font-weight:700;color:var(--tx);letter-spacing:-.5px;}
+.auth-brand h1{font-family:var(--f-brand);font-size:26px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--tx);}
 .auth-brand p{font-family:var(--fm);font-size:11px;color:var(--tx3);margin-top:3px;letter-spacing:.05em;}
 .auth-tabs{display:flex;border:1px solid var(--bd);border-radius:var(--rs);overflow:hidden;margin-bottom:24px;background:var(--bg2);}
 .auth-tab{flex:1;padding:9px;font-size:13px;font-weight:600;cursor:pointer;background:transparent;color:var(--tx3);border:none;transition:all var(--t);}
@@ -111,7 +135,7 @@ select option{background:var(--bg3);}
 
 /* ── Topbar ──────────────────────────────────────────────────── */
 .topbar{height:54px;background:var(--bg1);border-bottom:1px solid var(--bd);display:flex;align-items:center;padding:0 20px;gap:14px;flex-shrink:0;z-index:40;}
-.tb-logo{font-family:var(--fh);font-size:19px;font-style:italic;font-weight:600;color:var(--tx);display:flex;align-items:center;gap:9px;white-space:nowrap;}
+.tb-logo{font-family:var(--f-brand);font-size:18px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--tx);display:flex;align-items:center;gap:9px;white-space:nowrap;}
 .tb-logo-mark{width:28px;height:28px;background:linear-gradient(135deg,var(--a),var(--a2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
 .tb-sep{width:1px;height:22px;background:var(--bd2);flex-shrink:0;}
 
@@ -172,7 +196,7 @@ select option{background:var(--bg3);}
 /* Page header */
 .ph{margin-bottom:26px;}
 .ph-eyebrow{font-family:var(--fm);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--a);margin-bottom:6px;display:flex;align-items:center;gap:7px;}
-.ph h2{font-family:var(--fh);font-size:30px;font-weight:600;letter-spacing:-.3px;color:var(--tx);}
+.ph h2{font-family:var(--fh);font-size:26px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--tx);}
 .ph p{font-size:13px;color:var(--tx3);margin-top:5px;}
 .ph-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
 
@@ -232,7 +256,7 @@ textarea{resize:vertical;min-height:78px;line-height:1.65;}
 /* ╔══════════════════════════════════════════════════════════════╗
    ║  HOME                                                        ║
    ╚══════════════════════════════════════════════════════════════╝ */
-.home-greeting{font-family:var(--fh);font-size:32px;font-weight:700;letter-spacing:-.3px;color:var(--tx);}
+.home-greeting{font-family:var(--fh);font-size:28px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--tx);}
 .home-sub{font-family:var(--fm);font-size:12px;color:var(--tx3);margin-bottom:24px;margin-top:2px;}
 .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;}
 .stat-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:18px 20px;cursor:pointer;transition:all var(--t);position:relative;overflow:hidden;}
@@ -477,6 +501,13 @@ textarea{resize:vertical;min-height:78px;line-height:1.65;}
    ╚══════════════════════════════════════════════════════════════╝ */
 @media(max-width:960px){.stats-row{grid-template-columns:1fr 1fr;}.home-grid{grid-template-columns:1fr;}.task-board{grid-template-columns:1fr;}.side-panel{width:100%;top:0;}}
 @media(max-width:640px){.sidebar{width:52px;min-width:52px;}.page-content{padding:16px 14px;}.nav-text,.sb-section,.nav-badge{display:none;}.nav-item{justify-content:center;}.tb-date{display:none;}}
+
+
+/* Template Viewer Modal */
+.tpl-viewer-body{white-space:pre-wrap;font-family:'Comic Sans MS','Comic Sans',cursive;font-size:14px;color:var(--tx);line-height:1.8;background:var(--inp);border:1px solid var(--bd2);border-radius:var(--rs);padding:18px;min-height:120px;max-height:420px;overflow-y:auto;word-break:break-word;user-select:all;}
+.tpl-viewer-hint{font-family:var(--fm);font-size:11px;color:var(--tx3);margin-top:8px;text-align:center;}
+.tpl-copy-btn{width:100%;padding:11px;background:var(--a);color:#000;border:none;border-radius:var(--rs);font-size:14px;font-weight:700;cursor:pointer;transition:all var(--t);margin-top:10px;font-family:'Comic Sans MS','Comic Sans',cursive;}
+.tpl-copy-btn:hover{background:var(--al);}
 
 /* CREDITS FOOTER */
 .credits-footer{flex-shrink:0;height:28px;background:var(--bg1);border-top:1px solid var(--bd);display:flex;align-items:center;justify-content:center;gap:6px;font-family:var(--fm);font-size:10.5px;color:var(--tx4);letter-spacing:.03em;user-select:none;}
@@ -807,6 +838,16 @@ textarea{resize:vertical;min-height:78px;line-height:1.65;}
               </div>
             </div>
             <div class="settings-section">
+              <div class="settings-title">🌑 Tema visual</div>
+              <div class="setting-row">
+                <div><div class="setting-label">Esquema de cores</div></div>
+                <div style="display:flex;gap:8px;">
+                  <button class="btn btn-ghost btn-sm" id="theme-obs-btn" onclick="setColorTheme('obsidiana')" style="border:2px solid var(--a);">⬛ Obsidiana</button>
+                  <button class="btn btn-ghost btn-sm" id="theme-pp-btn" onclick="setColorTheme('preto-puro')">⚫ Preto Puro</button>
+                </div>
+              </div>
+            </div>
+            <div class="settings-section">
               <div class="settings-title">🎨 Cor de destaque</div>
               <div class="setting-row">
                 <div><div class="setting-label">Paleta</div></div>
@@ -847,10 +888,21 @@ textarea{resize:vertical;min-height:78px;line-height:1.65;}
       </div>
     </div>
   </div>
-  <!-- CREDITS FOOTER -->
+  
+<!-- Template Viewer Modal -->
+<div class="modal-ov" id="m-tpl-viewer"><div class="modal modal-lg">
+  <h3 id="tpl-viewer-title">📋 Template</h3>
+  <div class="tpl-viewer-body" id="tpl-viewer-body"></div>
+  <div class="tpl-viewer-hint">Selecione o texto acima e copie (Ctrl+C) para usar no disparo</div>
+  <button class="tpl-copy-btn" onclick="copyTemplate()">📋 Copiar texto completo</button>
+  <div class="modal-foot" style="margin-top:12px;">
+    <button class="btn btn-ghost" onclick="closeModal('m-tpl-viewer')">Fechar</button>
+  </div>
+</div></div>
+
+<!-- CREDITS FOOTER -->
   <div class="credits-footer">
-    <span>Idealizado por</span>
-    <span class="cf-accent">Raphaella Martins Macedo</span>
+    <span class="cf-accent">Raphaella Martins</span>
     <span class="cf-sep">·</span>
     <span>Desenvolvido por</span>
     <span class="cf-name">Lucas Coutinho</span>
@@ -1307,6 +1359,7 @@ async function startApp(user) {
 
   // Load prefs
   const prefs = JSON.parse(localStorage.getItem('cd_prefs') || '{}');
+  if (prefs.colorTheme) setColorTheme(prefs.colorTheme, true);
   if (prefs.accent) setAccent(prefs.accent, null, true);
   if (prefs.customAccent) applyCustomAccent(prefs.customAccent, true);
 
@@ -1794,14 +1847,28 @@ async function deleteTemplateFromModal() {
   await dbDelete('templates', id); closeModal('m-template'); loadTemplates(); toast('Template removido.','success');
 }
 async function deleteTemplateDirect(id) { await dbDelete('templates', id); loadTemplates(); toast('Template removido.','success'); }
-async function useTemplate(id) {
+function useTemplate(id) {
   const t = allTemplates.find(x => x.id === id); if (!t) return;
-  const { data, error } = await dbInsert('notes', { title: t.title, subtitle:'Criado a partir do template: '+t.title, body:`<p>${t.content.replace(/\n/g,'</p><p>')}</p>`, emoji:'📝', bg_color:'', font:'' });
-  if (error || !data?.[0]) { toast('❌ Erro ao criar nota','error'); return; }
-  allNotes.unshift(data[0]);
-  openNote(data[0].id);
-  navTo('notes', document.getElementById('ni-notes'));
-  toast('✅ Nota criada a partir do template!','success');
+  document.getElementById('tpl-viewer-title').textContent = '📋 ' + t.title;
+  document.getElementById('tpl-viewer-body').textContent = t.content || 'Sem conteúdo';
+  window._tplViewerContent = t.content || '';
+  openModal('m-tpl-viewer');
+}
+
+function copyTemplate() {
+  const text = window._tplViewerContent || '';
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => toast('✅ Texto copiado!','success'));
+  } else {
+    const el = document.getElementById('tpl-viewer-body');
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    document.execCommand('copy');
+    toast('✅ Texto copiado!','success');
+  }
 }
 function renderTemplates() {
   const grid = document.getElementById('tpl-grid');
@@ -1905,13 +1972,19 @@ async function previewFile(path) {
 function createFolder() {
   const name = document.getElementById('fd-name').value.trim();
   if (!name) { toast('⚠️ Nome obrigatório', 'error'); return; }
-  // Salva pastas no localStorage (são só metadados de navegação, não ocupam espaço no Storage)
   const user = currentUser?.email?.replace(/[^a-z0-9]/gi,'_') || 'shared';
   const key = `cd_folders_${user}`;
   const folders = JSON.parse(localStorage.getItem(key)||'[]');
   const parentPath = currentFolder || '';
-  const fullPath = parentPath ? parentPath + '/' + name : name;
-  if (!folders.includes(fullPath)) folders.push(fullPath);
+  // Sanitize folder name to avoid path issues
+  const safeName = name.replace(/[/\\'"]/g, '-').trim();
+  const fullPath = parentPath ? parentPath + '/' + safeName : safeName;
+  // Prevent duplicate folder names at same level
+  if (folders.includes(fullPath)) {
+    toast('⚠️ Já existe uma pasta com esse nome aqui.', 'error');
+    return;
+  }
+  folders.push(fullPath);
   localStorage.setItem(key, JSON.stringify(folders));
   closeModal('m-folder');
   document.getElementById('fd-name').value = '';
@@ -1919,21 +1992,35 @@ function createFolder() {
   toast('📁 Pasta criada!', 'success');
 }
 
-function deleteFolder(folderPath) {
+async function deleteFolder(folderPath) {
   if (!confirm('Remover esta pasta? Arquivos dentro dela também serão removidos do servidor.')) return;
   const user = currentUser?.email?.replace(/[^a-z0-9]/gi,'_') || 'shared';
   const key = `cd_folders_${user}`;
+
+  // Remove folder and subfolders from localStorage
   let folders = JSON.parse(localStorage.getItem(key)||'[]');
   folders = folders.filter(f => f !== folderPath && !f.startsWith(folderPath + '/'));
   localStorage.setItem(key, JSON.stringify(folders));
-  // Remove arquivos do Storage com esse prefixo
-  const toDelete = allStorageFiles.filter(f => f.path.startsWith(user + '/' + folderPath + '/'));
-  if (toDelete.length) {
-    _supabase.storage.from(BUCKET).remove(toDelete.map(f => f.path)).then(() => loadFiles());
-  } else {
-    renderFiles();
+
+  // Fetch ALL files in this folder from Supabase Storage (not just cached ones)
+  toast('⏳ Removendo arquivos...', '');
+  try {
+    const storagePath = `${user}/${folderPath}`;
+    const { data: folderFiles } = await _supabase.storage.from(BUCKET).list(storagePath, { limit: 500 });
+    if (folderFiles && folderFiles.length > 0) {
+      const filePaths = folderFiles
+        .filter(f => f.id) // only actual files
+        .map(f => `${storagePath}/${f.name}`);
+      if (filePaths.length > 0) {
+        await _supabase.storage.from(BUCKET).remove(filePaths);
+      }
+    }
+  } catch(e) {
+    console.error('Error deleting folder files:', e);
   }
-  toast('Pasta removida.', 'success');
+
+  await loadFiles();
+  toast('✅ Pasta removida.', 'success');
 }
 
 function navigateFolder(path) {
@@ -2003,11 +2090,10 @@ function renderFiles() {
   fg.style.display = visibleFolders.length ? 'grid' : 'none';
   fg.innerHTML = visibleFolders.map(fp => {
     const name = fp.split('/').pop();
-    const filesInside = allStorageFiles.filter(f => f.path.includes('/' + fp + '/')).length;
     return `<div class="folder-item" onclick="navigateFolder('${fp}')">
       <span style="font-size:22px;">📁</span>
       <span style="flex:1;font-size:13px;font-weight:600;color:var(--tx);">${esc(name)}</span>
-      <span style="font-family:var(--fm);font-size:10.5px;color:var(--tx3);">${filesInside} arq.</span>
+      <span style="font-family:var(--fm);font-size:10.5px;color:var(--tx3);" id="fcnt-${fp.replace(/[^a-z0-9]/gi,'_')}">📂</span>
       <button class="folder-del" onclick="event.stopPropagation();deleteFolder('${fp}')">✕</button>
     </div>`;
   }).join('');
@@ -2048,6 +2134,24 @@ function renderFiles() {
 function dzOver(e) { e.preventDefault(); document.getElementById('drop-zone').classList.add('over'); }
 function dzLeave(e) { document.getElementById('drop-zone').classList.remove('over'); }
 function dzDrop(e) { e.preventDefault(); dzLeave(e); handleFiles(e.dataTransfer.files); }
+
+
+// ══════════════════════════════════════════════════════════════
+// THEME SWITCHER
+// ══════════════════════════════════════════════════════════════
+function setColorTheme(theme, silent) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const obsBtn = document.getElementById('theme-obs-btn');
+  const ppBtn  = document.getElementById('theme-pp-btn');
+  if (obsBtn) obsBtn.style.borderWidth = theme === 'obsidiana' ? '2px' : '1px';
+  if (ppBtn)  ppBtn.style.borderWidth  = theme === 'preto-puro' ? '2px' : '1px';
+  if (obsBtn) obsBtn.style.borderColor = theme === 'obsidiana' ? 'var(--a)' : 'var(--bd2)';
+  if (ppBtn)  ppBtn.style.borderColor  = theme === 'preto-puro' ? 'var(--a)' : 'var(--bd2)';
+  const prefs = JSON.parse(localStorage.getItem('cd_prefs')||'{}');
+  prefs.colorTheme = theme;
+  localStorage.setItem('cd_prefs', JSON.stringify(prefs));
+  if (!silent) toast('Tema alterado!', 'success');
+}
 
 // ══════════════════════════════════════════════════════════════
 // SETTINGS / THEME
